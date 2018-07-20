@@ -1,4 +1,11 @@
 $(document).ready(function(){
+
+    var totalQ = 5,
+        answerQ = 0,
+        qNo;
+    
+    $( "#radioset" ).buttonset();
+
     var question = [];
     $('.qContent').each(function(){
         question.push($(this).text());
@@ -20,5 +27,12 @@ $(document).ready(function(){
     //    console.log(val);
     //});
 
+    
+    $('#radioset').click(function(){
+
+        qNo = 3;
+
+        $('qArea').text(question[qNo]);
+    });
 
 });
