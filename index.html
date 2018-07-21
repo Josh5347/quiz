@@ -6,20 +6,24 @@
     <title>Who wants to be a genius</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/jquery-ui.min.css" rel="stylesheet">
+    <link href="css/quiz.css" rel="stylesheet">
     <script src="js/jquery-2.2.4.min.js"></script>    
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/quiz.js"></script>
 </head>
 <body>
-    <form method="GET">
-        <h2>請選擇題目類型</h2>
-        <div id="radioset">
-            <input class="radioClass" id="radio1" type="radio" name="qClass" value="人文"><label for="radio1">人文</label>
-        </div>
-    </form>
-
-    <p id="qArea"></p>
-
+    <div>
+        <form method="GET">
+            <h2>請選擇題目類型</h2>
+            <div id="radioset">
+                <input class="radioClass" id="radio1" type="radio" name="qClass" value="人文"><label for="radio1">人文</label>
+            </div>
+        </form>
+    </div>
+    <br/>
+    <div>
+        <h1 id="qArea"></h1>
+    </div>
     <table hidden>
         <tr>
             <th>編號</th>
