@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
-    var totalQ = 5,
-        answeredArray = [],
+    var totalQ = 6,
+        answeredArray = [999],
         qNo, 
         qRandom;
     
@@ -28,32 +28,40 @@ $(document).ready(function(){
     //});
 
     // 等待動畫可使用 shCircleLoader
-    $('#radioset').click(function(){
-
-
-        answeredArray.push(1);
-
+    $('.radioClass').click(function(){
 
         var isPick = false;
         while ( isPick == false ) {
-
-            // 題目編號為亂數
+            
+            // 題目以亂數出題
             qRandom = getRnd( 0, 4 );
             
-            answeredArray.forEach(function( val ){
-                if ( val != qRandom ){
-                    isPick = true;
+            console.log("length:",answeredArray.length);
+            //若題目未出現過，則選擇該題，否則再以亂數重新選題號
+            for( i=0; i< answeredArray.length; i++ ){
+                
+                console.log("val:", answeredArray[i], " qRandom:", qRandom );
 
+                if ( answeredArray[i] != qRandom ){
+                    isPick = true;   
+                }else{
+                    isPick = false;
+                    break;
                 }
-            });
+            }
 
         }
         
+        console.log("answeredArray:",answeredArray);
+        //將新題號新增入array中
         answeredArray.push(qRandom);
         qNo = qRandom;
+        console.log("length:",answeredArray.length," totoalQ:", totalQ);
+        console.log("answeredArray:",answeredArray);
 
+        //所應答的題目已經答完，則將題型按鈕鎖住
         if ( answeredArray.length == totalQ ){
-            $(this).prop("disable");
+            $('.radioClass').prop("disabled", true);
         }
 
         var qHTML = "題目："　+ question[qNo];
