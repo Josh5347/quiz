@@ -6,8 +6,10 @@
     <title>Who wants to be a genius</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/jquery-ui.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/quiz.css" rel="stylesheet">
     <script src="js/jquery-2.2.4.min.js"></script>    
+    <script src="js/bootstrap.js"></script>    
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/quiz.js"></script>
 </head>
@@ -23,6 +25,17 @@
     <br/>
     <div>
         <h1 id="qArea"></h1>
+    </div>
+    <div>
+        <h1 id="countDownArea"></h1>
+    </div>
+    <br/>
+    <div id="answerEarly" hidden>
+        <button type="button" class="btn btn-primary btn-lg"><strong style="font-size: 26pt">　我　要　搶　答　</strong></button>
+    </div>
+    <div class="dialogWin" id="dialog" title="請答題">
+        答案是：
+        <div id="dialogAnswer"></div>
     </div>
     <table hidden>
         <tr>

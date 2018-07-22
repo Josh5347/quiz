@@ -1,10 +1,50 @@
 $(document).ready(function(){
 
-    var totalQ = 6,
+    var totalQ = 5,
         answeredArray = [999],
-        qNo, 
+        qNo,
+        qRight,
+        qWrong, 
         qRandom;
     
+    $( ".dialogWin" ).dialog({
+        modal: true,
+        autoOpen: false,
+        //width: 400,
+        autoSize: true,
+        show: 500,
+        hide: 500,
+        buttons: [
+                {
+                    text: "看答案",
+                    click: function() {
+                        $('#dialogAnswer').text(qAnswer[qNo]);
+                    }
+                },
+                {
+                    text: "答對",
+                    click: function() {
+                        qRight++;
+                        $('.radioClass').prop("disabled", false);
+                        $('.radioClass').removeAttr('checked').removeAttr('selected').button("refresh");
+                        $('#countDownArea').text("");                        
+                        $('#answerEarly').prop("hidden",true);
+                        $( this ).dialog( "close" );
+                    }
+                },
+                {
+                    text: "答錯",
+                    click: function() {
+                        $('.radioClass').prop("disabled", false);
+                        $('.radioClass').removeAttr('checked').removeAttr('selected').button("refresh");
+                        $('#countDownArea').text("");
+                        $('#answerEarly').prop("hidden",true);
+                        $( this ).dialog( "close" );
+                    }
+                }
+            ]
+    });
+
     $( "#radioset" ).buttonset();
 
 
@@ -33,7 +73,7 @@ $(document).ready(function(){
         var isPick = false;
         while ( isPick == false ) {
             
-            // 題目以亂數出題
+            // 題目以亂數選出題號
             qRandom = getRnd( 0, 4 );
             
             console.log("length:",answeredArray.length);
@@ -59,14 +99,37 @@ $(document).ready(function(){
         console.log("length:",answeredArray.length," totoalQ:", totalQ);
         console.log("answeredArray:",answeredArray);
 
-        //所應答的題目已經答完，則將題型按鈕鎖住
-        if ( answeredArray.length == totalQ ){
+        //所應答的題目已經答完，則將題型按鈕鎖住，array的第一個item是999，totalQ需 + 1
+        if ( answeredArray.length == (totalQ + 1) ){
             $('.radioClass').prop("disabled", true);
         }
 
+        //顯示題目
         var qHTML = "題目："　+ question[qNo];
-
         $('#qArea').text(qHTML);
+
+        var counter = 5;
+        function countdown(counter){
+            if (counter > 0){
+                //倒數計時應鎖住題型按鈕
+                $('.radioClass').prop("disabled", true);
+                $('#answerEarly').prop("hidden",false);
+                counter--;
+                setTimeout(function(){countdown(counter)},1000);
+                $('#countDownArea').text("倒數計時...."+ counter);
+                $('#answerEarly button').click(function(){
+                    counter = 0;
+                });
+                //console.log(counter);
+            }else{
+                $("#dialog").dialog( "open" );
+            }
+            
+        }
+        countdown(counter);
+        
+        
+
     });
 
 });
