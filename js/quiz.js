@@ -7,13 +7,15 @@ $(document).ready(function(){
         qWrong, 
         qRandom;
     
+        $('#answerEarly').css("visibility","hidden");
+
     $( ".dialogWin" ).dialog({
         modal: true,
         autoOpen: false,
         //width: 400,
         autoSize: true,
-        show: 500,
-        hide: 500,
+        show: 300,
+        hide: 100,
         buttons: [
                 {
                     text: "看答案",
@@ -27,8 +29,9 @@ $(document).ready(function(){
                         qRight++;
                         $('.radioClass').prop("disabled", false);
                         $('.radioClass').removeAttr('checked').removeAttr('selected').button("refresh");
-                        $('#countDownArea').text("");                        
-                        $('#answerEarly').prop("hidden",true);
+                        $('#countDownArea').text("　");//給全形空白以撐開該區域，以免fiendset縮回
+                        $('#qArea').text("　");//給全形空白以撐開該區域，以免fiendset縮回
+                        $('#answerEarly').css("visibility","hidden");
                         $( this ).dialog( "close" );
                     }
                 },
@@ -37,15 +40,16 @@ $(document).ready(function(){
                     click: function() {
                         $('.radioClass').prop("disabled", false);
                         $('.radioClass').removeAttr('checked').removeAttr('selected').button("refresh");
-                        $('#countDownArea').text("");
-                        $('#answerEarly').prop("hidden",true);
+                        $('#countDownArea').text("　");//給全形空白以撐開該區域，以免fiendset縮回
+                        $('#qArea').text("　");//給全形空白以撐開該區域，以免fiendset縮回
+                        $('#answerEarly').css("visibility","hidden");
                         $( this ).dialog( "close" );
                     }
                 }
             ]
     });
 
-    $( "#radioset" ).buttonset();
+    $( ".radioset" ).buttonset();
 
 
     // 將題目，類型，答案載入 array中
@@ -70,6 +74,7 @@ $(document).ready(function(){
     // 等待動畫可使用 shCircleLoader
     $('.radioClass').click(function(){
 
+        //$('#teamA').css('opacity','0.1').prop('disabled',true);
         var isPick = false;
         while ( isPick == false ) {
             
@@ -113,7 +118,7 @@ $(document).ready(function(){
             if (counter > 0){
                 //倒數計時應鎖住題型按鈕
                 $('.radioClass').prop("disabled", true);
-                $('#answerEarly').prop("hidden",false);
+                $('#answerEarly').css("visibility","visible");
                 counter--;
                 setTimeout(function(){countdown(counter)},1000);
                 $('#countDownArea').text("倒數計時...."+ counter);
