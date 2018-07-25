@@ -14,31 +14,55 @@
     <script src="js/quiz.js"></script>
 </head>
 <body>
-    <fieldset id="teamA">
+    <fieldset id="team0">
         <legend>Team A</legend>
         <div>
             <form method="GET">
                 <div class="qClassTitle">選擇題目類型</div>
-                <div class="radioset">
-                    <input class="radioClass" id="radio1" type="radio" name="qClass" value="人文"><label for="radio1">人文</label>
+                <div class="radioset" id="radioset0">
+                    <input class="radioClass" id="radio0" type="radio" name="qClass" value="人文"><label for="radio1">人文</label>
                 </div>
             </form>
         </div>
         <div>
-            <h1 id="qArea">　</h1>
+            <h1 id="qArea0">　</h1>
         </div>
         <div>
-            <h1 id="countDownArea">　</h1>
+            <h1 id="countDownArea0">　</h1>
         </div>
         <br/>
-        <div id="answerEarly">
-            <button type="button" class="btn btn-primary btn-lg"><strong style="font-size: 18pt">　我　要　搶　答　</strong></button>
+        <div id="answerEarly0">
+            <button id="answerEarlyButton0" type="button" class="btn btn-primary btn-lg"><strong style="font-size: 18pt">　我　要　搶　答　</strong></button>
         </div>
+        
+    </fieldset>
+    <fieldset id="team1">
+            <legend>Team B</legend>
+            <div>
+                <form method="GET">
+    
+                    <div class="qClassTitle">選擇題目類型</div>
+                    <div class="radioset" id="radioset1">
+                        <input class="radioClass" id="radio1" type="radio" name="qClass" value="人文"><label for="radio1">人文</label>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <h1 id="qArea1">　</h1>
+            </div>
+            <div>
+                <h1 id="countDownArea1">　</h1>
+            </div>
+            <br/>
+            <div id="answerEarly1">
+                <button id="answerEarlyButton1" type="button" class="btn btn-primary btn-lg"><strong style="font-size: 18pt">　我　要　搶　答　</strong></button>
+            </div>
+        </fieldset>
+
         <div class="dialogWin" id="dialog" title="請答題">
             答案是：
             <div id="dialogAnswer"></div>
         </div>
-    </fieldset>
 
     <table hidden>
         <tr>
@@ -76,6 +100,12 @@
             <td class="qContent">Lorem ipsum dolor sit amet, consectetur adipisicing elit,  Content 4.</td>
             <td class="qClass">人文</td>
             <td class="qAnswer">a4</td>
+        </tr>
+        <tr>
+            <td class="qNo">5</td>
+            <td class="qContent">Lorem ipsum dolor sit amet, consectetur adipisicing elit,  Content 5.</td>
+            <td class="qClass">人文</td>
+            <td class="qAnswer">a5</td>
         </tr>
 
         </tr>

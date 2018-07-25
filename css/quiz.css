@@ -1,3 +1,27 @@
 body {
     text-align: center;
 }
+
+fieldset {
+	padding: 10px;
+	border: 1px solid #888;
+	margin: 25px 50px 50px;	
+}
+legend{
+    font-size: 20px;
+}
+.qClassTitle{
+    margin-left: 50px;
+    margin-top: 15px;
+    font-size: 28px;
+    float : left;
+}
+h1{
+    clear: left;
+}
+.radioset{
+    margin-top: 15px
+}
+/* #answerEarly{
+    visibility: hidden;
+} */
