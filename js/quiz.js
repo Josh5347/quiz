@@ -8,7 +8,7 @@ $(document).ready(function(){
     var totalQ = 8;//teamA,teamB 應答總題數，此數應為偶數
     var qNo = 0;
     var team = 0;
-    var inputClass;
+    var inputType;
     
 
     $( ".dialogWin" ).dialog({
@@ -59,21 +59,21 @@ $(document).ready(function(){
     //    console.log(val);
     //});
 
-    var qClassNum = new Object();
-    qClassNum['歷史'] = 0;
-    qClassNum['科學'] = 0;
+    var qTypeNum = new Object();
+    qTypeNum['歷史'] = 0;
+    qTypeNum['科學'] = 0;
 
-    qClass = [];
-    $('.qClass').each(function(){
-        qClass.push($(this).text());
+    qType = [];
+    $('.qType').each(function(){
+        qType.push($(this).text());
         console.log($(this).text());
         //計算各題型的題目數量
         switch ($(this).text()) {
             case "歷史":
-                qClassNum['歷史']++;
+                qTypeNum['歷史']++;
                 break;
             case "科學":
-                qClassNum['科學']++;
+                qTypeNum['科學']++;
                 break;
         
             default:
@@ -81,7 +81,7 @@ $(document).ready(function(){
         }
     });     
 
-    //console.log("歷史:",qClassNum['歷史']," 科學:",qClassNum['科學']);
+    //console.log("歷史:",qTypeNum['歷史']," 科學:",qTypeNum['科學']);
 
     $('#answerEarly' + '0' ).css("visibility","hidden");
     $('#answerEarly' + '1' ).css("visibility","hidden");
@@ -94,20 +94,20 @@ $(document).ready(function(){
     buttonset[1] = $('#buttonset1 input[type="button"]');
 
     //設定題型按鈕文字為"歷史 : num"
-    btnHTML = "歷史：" + qClassNum['歷史'];
+    btnHTML = "歷史：" + qTypeNum['歷史'];
     $('input[value="歷史"]').val(btnHTML);
 
-    btnHTML = "科學：" + qClassNum['科學'];
+    btnHTML = "科學：" + qTypeNum['科學'];
     $('input[value="科學"]').val(btnHTML);
 
     // 提醒自己，等待動畫可使用 shCircleLoader
     //Team A 題型按鈕
     $(buttonset[0]).click(function(){
 
-        var tmpClass = $(this).val();
-        // inputClass 中不包含 ": num"
-        inputClass = tmpClass.substr(0, 2);
-        console.log(inputClass);
+        var tmpType = $(this).val();
+        // inputType 中不包含 ": num"
+        inputType = tmpType.substr(0, 2);
+        console.log(inputType);
 
         //題型鈕於按下後鎖住
         $(buttonset[0]).prop('disabled',true);
@@ -120,10 +120,10 @@ $(document).ready(function(){
     //Team B 題型按鈕
     $(buttonset[1]).click(function(){
         
-        var tmpClass = $(this).val();
-        // inputClass 中不包含 ": num"
-        inputClass = tmpClass.substr(0, 2);
-        console.log(inputClass);
+        var tmpType = $(this).val();
+        // inputType 中不包含 ": num"
+        inputType = tmpType.substr(0, 2);
+        console.log(inputType);
         $(buttonset[1]).prop('disabled',true);
         //換成teamB
         team = 1;
@@ -154,8 +154,8 @@ $(document).ready(function(){
                     isPick = false;
                     break;
                 }
-                console.log("qClass[",qRandom,"]:", qClass[qRandom], " inputClass:", inputClass);
-                /* if ( qClass[qRandom] == inputClass){
+                console.log("qType[",qRandom,"]:", qType[qRandom], " inputType:", inputType);
+                /* if ( qType[qRandom] == inputType){
                     isPick = true;   
                 }else{
                     isPick = false;
@@ -186,48 +186,57 @@ $(document).ready(function(){
         $('#qArea'+ team).text(qHTML);
         //console.log(qHTML);
 
-        qClassNum[inputClass]--;
-        console.log("qClassNum[",inputClass,"]:",qClassNum[inputClass]);
+        qTypeNum[inputType]--;
+        console.log("qTypeNum[",inputType,"]:",qTypeNum[inputType]);
 
-        if(qClassNum[inputClass]==0){
-            $('input[value='+inputClass+']').prop('disabled',true);
+        //若該題型已經無題目可出，將該題型按鈕鎖住
+        if(qTypeNum[inputType]==0){
+            $('input[value^='+inputType+']').prop('disabled',true);
         }
 
-        console.log("歷史:",qClassNum['歷史']," 科學:",qClassNum['科學']);
-        btnHTML = "歷史：" + qClassNum['歷史'];
-        //因為value已經是 "歷史 : num"，所以只要開頭符合 "歷史" 就是要選擇的 button
-        $('input[value^="歷史"]').val(btnHTML);
+        console.log("歷史:",qTypeNum['歷史']," 科學:",qTypeNum['科學']);
+
+        changeButtonText(inputType);
+        //btnHTML = "歷史：" + qTypeNum['歷史'];
+        //$('input[value^='+inputType+']').val(btnHTML);
     
-        btnHTML = "科學：" + qClassNum['科學'];
-        $('input[value^="科學"]').val(btnHTML);
+        //btnHTML = "科學：" + qTypeNum['科學'];
+        //$('input[value^='+inputType+']').val(btnHTML);
     
         var counter = 5;
-        function countdown(counter){
-            if (counter > 0){
-                
-                //$('#radio' + team).prop("disabled", true);
-                $('#answerEarly' + team).css("visibility","visible");
-                counter--;
-                setTimeout(function(){countdown(counter)},1000);
-                $('#countDownArea' + team).text("倒數計時...."+ counter);
-                $('#answerEarlyButton'+ team).click(function(){
-                    counter = 0;
-                });
-                //console.log(counter);
-            }else{
-                $("#dialog").dialog( "open" );
-            }
-            
-        }
         countdown(counter);    
     
     }
 
+    function countdown(counter){
+        if (counter > 0){
+            
+            //$('#radio' + team).prop("disabled", true);
+            $('#answerEarly' + team).css("visibility","visible");
+            counter--;
+            setTimeout(function(){countdown(counter)},1000);
+            $('#countDownArea' + team).text("倒數計時...."+ counter);
+            $('#answerEarlyButton'+ team).click(function(){
+                counter = 0;
+            });
+            //console.log(counter);
+        }else{
+            $("#dialog").dialog( "open" );
+        }
+        
+    }
+    function changeButtonText(inputTypeInFunc) {
+        //console.log("qTypeNum[",inputTypeInFunc,"]:",qTypeNum[inputTypeInFunc]);
+        //更改的文字
+        btnHTML = inputTypeInFunc + "：" + qTypeNum[inputTypeInFunc];
+        //因為value已經是 "歷史 : num"，所以只要開頭符合 "歷史" 就是要選擇的 button
+        $('input[value^='+inputTypeInFunc+']').val(btnHTML);
+    }
     function dialogFunc(){
         
         $(buttonset[team]).prop('disabled',false);
         //$('#radio' + team).prop("disabled", false);
-        //$('.radioClass').removeAttr('checked').removeAttr('selected').button("refresh");
+        //$('.radioType').removeAttr('checked').removeAttr('selected').button("refresh");
         $('#countDownArea' + team).text("　");//給全形空白以撐開該區域，以免fiendset縮回
         $('#qArea' + team).text("　");//給全形空白以撐開該區域，以免fiendset縮回
         $('#answerEarly' + team).css("visibility","hidden");
