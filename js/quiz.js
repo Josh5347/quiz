@@ -147,20 +147,21 @@ $(document).ready(function(){
                 
                 console.log("val:", answeredArray[i], " qRandom:", qRandom );
     
-                if ( answeredArray[i] != qRandom ){
-                    
+                //亂數出題題目 不等於 已經出過的題目
+                if ( qRandom != answeredArray[i] ){
                     isPick = true;   
                 }else{
                     isPick = false;
                     break;
                 }
                 console.log("qType[",qRandom,"]:", qType[qRandom], " inputType:", inputType);
-                /* if ( qType[qRandom] == inputType){
+                //
+                if ( qType[qRandom] == inputType){
                     isPick = true;   
                 }else{
                     isPick = false;
                     break;
-                } */
+                }
             }
     
         }
