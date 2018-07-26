@@ -104,7 +104,9 @@ $(document).ready(function(){
     //Team A 題型按鈕
     $(buttonset[0]).click(function(){
 
-        inputClass = $(this).val();
+        var tmpClass = $(this).val();
+        // inputClass 中不包含 ": num"
+        inputClass = tmpClass.substr(0, 2);
         console.log(inputClass);
 
         //題型鈕於按下後鎖住
@@ -117,7 +119,10 @@ $(document).ready(function(){
 
     //Team B 題型按鈕
     $(buttonset[1]).click(function(){
-        inputClass = $(this).val();
+        
+        var tmpClass = $(this).val();
+        // inputClass 中不包含 ": num"
+        inputClass = tmpClass.substr(0, 2);
         console.log(inputClass);
         $(buttonset[1]).prop('disabled',true);
         //換成teamB
@@ -190,10 +195,11 @@ $(document).ready(function(){
 
         console.log("歷史:",qClassNum['歷史']," 科學:",qClassNum['科學']);
         btnHTML = "歷史：" + qClassNum['歷史'];
-        $('input[value="歷史"]').val(btnHTML);
+        //因為value已經是 "歷史 : num"，所以只要開頭符合 "歷史" 就是要選擇的 button
+        $('input[value^="歷史"]').val(btnHTML);
     
         btnHTML = "科學：" + qClassNum['科學'];
-        $('input[value="科學"]').val(btnHTML);
+        $('input[value^="科學"]').val(btnHTML);
     
         var counter = 5;
         function countdown(counter){
