@@ -181,10 +181,19 @@ $(document).ready(function(){
         $('#qArea'+ team).text(qHTML);
         //console.log(qHTML);
 
-        /* qClassNum[inputClass]--;
+        qClassNum[inputClass]--;
+        console.log("qClassNum[",inputClass,"]:",qClassNum[inputClass]);
+
         if(qClassNum[inputClass]==0){
-            $('input[value=inputClass]').prop('disabled',true);
-        } */
+            $('input[value='+inputClass+']').prop('disabled',true);
+        }
+
+        console.log("歷史:",qClassNum['歷史']," 科學:",qClassNum['科學']);
+        btnHTML = "歷史：" + qClassNum['歷史'];
+        $('input[value="歷史"]').val(btnHTML);
+    
+        btnHTML = "科學：" + qClassNum['科學'];
+        $('input[value="科學"]').val(btnHTML);
     
         var counter = 5;
         function countdown(counter){
