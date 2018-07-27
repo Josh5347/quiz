@@ -94,23 +94,24 @@ $(document).ready(function(){
 
     var buttonset = new Object();    
     //挑選題型按鈕
-    buttonset[0] = $('#buttonset0 input[type="button"]');
-    buttonset[1] = $('#buttonset1 input[type="button"]');
+    buttonset[0] = $('#buttonset0 button[type="button"]');
+    buttonset[1] = $('#buttonset1 button[type="button"]');
 
     //設定題型按鈕文字為"歷史 : num"
     btnHTML = "歷史：" + qTypeNum['歷史'];
-    $('input[value="歷史"]').val(btnHTML);
+    $('button[value="歷史"]').text(btnHTML);
 
     btnHTML = "科學：" + qTypeNum['科學'];
-    $('input[value="科學"]').val(btnHTML);
+    $('button[value="科學"]').text(btnHTML);
 
     // 提醒自己，等待動畫可使用 shCircleLoader
     //Team A 題型按鈕
     $(buttonset[0]).click(function(){
 
-        var tmpType = $(this).val();
+        inputType = $(this).val();
+        //var tmpType = $(this).val();
         // inputType 中不包含 ": num"
-        inputType = tmpType.substr(0, 2);
+        //inputType = tmpType.substr(0, 2);
         console.log(inputType);
 
         //題型鈕於按下後鎖住，等按下答對或答錯按鈕後解開
@@ -177,7 +178,7 @@ $(document).ready(function(){
         console.log("length:",answeredArray.length," totalQ:", totalQ);
         console.log("answeredArray:",answeredArray);
     
-        //所應答的題目已經答完，則將題型按鈕鎖住，不可再選題型，array的第一個item是999，totalQ需 + 1
+        //所應答的題目已經答完，題型按鈕皆已消失，不可再選題型，array的第一個item是999，totalQ需 + 1
     
         if ( answeredArray.length == (totalQ  + 1 ) ){
             $(buttonset[0]).prop('disabled',true);
@@ -196,7 +197,7 @@ $(document).ready(function(){
 
         //若該題型已經無題目可出，將該題型按鈕隱藏
         if(qTypeNum[inputType]==0){
-            $('input[value^='+inputType+']').css("visibility","hidden");
+            $('button[value='+inputType+']').css("visibility","hidden");
         }
 
         console.log("歷史:",qTypeNum['歷史']," 科學:",qTypeNum['科學']);
@@ -236,7 +237,7 @@ $(document).ready(function(){
         //更改的文字
         btnHTML = inputTypeInFunc + "：" + qTypeNum[inputTypeInFunc];
         //因為value已經是 "歷史 : num"，所以只要開頭符合 "歷史" 就是要選擇的 button
-        $('input[value^='+inputTypeInFunc+']').val(btnHTML);
+        $('button[value='+inputTypeInFunc+']').text(btnHTML);
     }
     function dialogFunc(){
         
@@ -259,6 +260,11 @@ $(document).ready(function(){
             $('#team0').css('opacity','0.3').prop('disabled',true);
         }
 
+        //所應答的題目已經答完，array的第一個item是999，totalQ需 + 1
+        if(answeredArray.length == (totalQ  + 1 )){
+            //開啟teamB
+            $('#team1').css('opacity','1').prop('disabled',false);
+        }
         //計分區
         $('#rightAnsNum' + team).text(qRight[team]);
         $('#wrongAnsNum' + team).text(qWrong[team]);
