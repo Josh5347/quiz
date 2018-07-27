@@ -44,6 +44,7 @@ h1{
     color: white;
     padding: 10px;
 }
-/* #answerEarly{
-    visibility: hidden;
-} */
+#dialogAnswer{
+    font-size: 26px;
+    font-weight: bolder;
+}

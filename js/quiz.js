@@ -5,11 +5,11 @@ $(document).ready(function(){
         
     //var answeredArray = new Array();
     var answeredArray = [999];
-    var totalQ = 0;//teamA,teamB 應答總題數，此數應為偶數
+    var totalQ = 0;//teamA + teamB 應答總題數，此數應為偶數
+    var teamTotalQ;//各隊總題數 totalQ / 2 
     var qNo = 0;
     var team = 0;
     var inputType;
-    
 
     $( ".dialogWin" ).dialog({
         modal: true,
@@ -89,6 +89,9 @@ $(document).ready(function(){
     //遊戲開始時將teamB鎖住
     $('#team1').css('opacity','0.3').prop('disabled',true);
 
+    teamTotalQ = totalQ / 2;
+    $('.teamTotalQ').text(teamTotalQ);
+
     var buttonset = new Object();    
     //挑選題型按鈕
     buttonset[0] = $('#buttonset0 input[type="button"]');
@@ -110,7 +113,7 @@ $(document).ready(function(){
         inputType = tmpType.substr(0, 2);
         console.log(inputType);
 
-        //題型鈕於按下後鎖住
+        //題型鈕於按下後鎖住，等按下答對或答錯按鈕後解開
         $(buttonset[0]).prop('disabled',true);
         //換成teamA
         team = 0;
@@ -191,9 +194,9 @@ $(document).ready(function(){
         qTypeNum[inputType]--;
         console.log("qTypeNum[",inputType,"]:",qTypeNum[inputType]);
 
-        //若該題型已經無題目可出，將該題型按鈕鎖住
+        //若該題型已經無題目可出，將該題型按鈕隱藏
         if(qTypeNum[inputType]==0){
-            $('input[value^='+inputType+']').prop('disabled',true);
+            $('input[value^='+inputType+']').css("visibility","hidden");
         }
 
         console.log("歷史:",qTypeNum['歷史']," 科學:",qTypeNum['科學']);
@@ -237,11 +240,14 @@ $(document).ready(function(){
     }
     function dialogFunc(){
         
+        //按下答對或答錯按鈕後解開
         $(buttonset[team]).prop('disabled',false);
         //$('#radio' + team).prop("disabled", false);
         //$('.radioType').removeAttr('checked').removeAttr('selected').button("refresh");
-        $('#countDownArea' + team).text("　");//給全形空白以撐開該區域，以免fiendset縮回
-        $('#qArea' + team).text("　");//給全形空白以撐開該區域，以免fiendset縮回
+        $('#countDownArea' + team).text("　");//給全形空白以撐開該區域，以免fieldset縮回
+        $('#qArea' + team).text("　");//給全形空白以撐開該區域，以免fieldset縮回
+        $('#dialogAnswer').text("");//關閉dialog前，將答案清空
+
         $('#answerEarly' + team).css("visibility","hidden");
         if(team){
             //選擇teamA，將teamB鎖住
@@ -252,6 +258,11 @@ $(document).ready(function(){
             $('#team1').css('opacity','1').prop('disabled',false);
             $('#team0').css('opacity','0.3').prop('disabled',true);
         }
+
+        //計分區
+        $('#rightAnsNum' + team).text(qRight[team]);
+        $('#wrongAnsNum' + team).text(qWrong[team]);
+
         //$( this ).dialog( "close" );
     }    
 
