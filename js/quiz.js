@@ -5,7 +5,7 @@ $(document).ready(function(){
         
     //var answeredArray = new Array();
     var answeredArray = [999];
-    var totalQ = 8;//teamA,teamB 應答總題數，此數應為偶數
+    var totalQ = 0;//teamA,teamB 應答總題數，此數應為偶數
     var qNo = 0;
     var team = 0;
     var inputType;
@@ -49,6 +49,7 @@ $(document).ready(function(){
     question = [];
     $('.qContent').each(function(){
         question.push($(this).text());
+        totalQ++;
     });
 
     qAnswer = [];
@@ -147,7 +148,7 @@ $(document).ready(function(){
                 
                 console.log("val:", answeredArray[i], " qRandom:", qRandom );
     
-                //亂數出題題目 不等於 已經出過的題目
+                //亂數出題題號 不等於 已經出過的題號，一旦亂數出題 等於 已經出過的題號 則跳出迴圈，重新出題
                 if ( qRandom != answeredArray[i] ){
                     isPick = true;   
                 }else{
@@ -155,7 +156,7 @@ $(document).ready(function(){
                     break;
                 }
                 console.log("qType[",qRandom,"]:", qType[qRandom], " inputType:", inputType);
-                //
+                //亂數出題題型 等於 輸入的題型，一旦亂數出題題型 不等於 輸入題型 則跳出迴圈，重新出題
                 if ( qType[qRandom] == inputType){
                     isPick = true;   
                 }else{
@@ -213,6 +214,7 @@ $(document).ready(function(){
         if (counter > 0){
             
             //$('#radio' + team).prop("disabled", true);
+            //將
             $('#answerEarly' + team).css("visibility","visible");
             counter--;
             setTimeout(function(){countdown(counter)},1000);

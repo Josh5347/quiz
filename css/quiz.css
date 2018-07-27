@@ -5,7 +5,7 @@ body {
 fieldset {
 	padding: 10px;
 	border: 1px solid #888;
-	margin: 25px 50px 50px;	
+	margin: 25px;	
 }
 legend{
     font-size: 20px;
@@ -17,9 +17,32 @@ legend{
 }
 h1{
     clear: left;
+    margin-top: 2px;
+    margin-bottom: 2px
 }
 .radioset{
     margin-top: 15px
+}
+.qAreaDiv{
+    background-color: lightgoldenrodyellow;
+    border-radius: 10px;
+    padding: 5px 2px 5px 2px;
+    margin: 20px 1px 5px 1px;
+}
+.answerEarly{
+    float: left;
+    margin-left: 40%;
+}
+.scoreDiv{
+    float: right;
+    background-color: cornflowerblue;
+    border-radius: 10px;
+    font-size: 20px;
+    width: 200px;
+    height: 100px;
+    font-weight: bolder;
+    color: white;
+    padding: 10px;
 }
 /* #answerEarly{
     visibility: hidden;
