@@ -5,7 +5,7 @@ body {
 fieldset {
 	padding: 10px;
 	border: 1px solid #888;
-	margin: 25px;	
+	margin: 5px 25px;	
 }
 legend{
     font-size: 20px;
@@ -31,6 +31,7 @@ h1{
 }
 .answerEarly{
     float: left;
+    margin-top: 15px;
     margin-left: 40%;
 }
 .scoreDiv{
@@ -39,7 +40,7 @@ h1{
     border-radius: 10px;
     font-size: 20px;
     width: 200px;
-    height: 100px;
+    height: 120px;
     font-weight: bolder;
     color: white;
     padding: 10px;
