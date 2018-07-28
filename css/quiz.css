@@ -8,10 +8,13 @@ fieldset {
 	margin: 5px 25px;	
 }
 legend{
-    font-size: 20px;
+    font-size: 28px;
+    text-align: left;
+    margin-left: 3%;
 }
+
 .qTypeTitle{
-    margin-left: 10%;
+    margin-left: 20%;
     font-size: 28px;
     float : left;
 }
@@ -22,7 +25,7 @@ h1{
 }
 .buttonset{
     text-align: left;
-    margin-left: 25%;
+    margin-left: 35%;
 }
 .qAreaDiv{
 /*     background-color: navajowhite; */
