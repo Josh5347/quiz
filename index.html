@@ -45,43 +45,116 @@
         </div>
     </fieldset>
     <fieldset id="team1">
-            <legend>Team B</legend>
-            <div>
-                <form method="GET">
-    
-                    <div class="qTypeTitle">選擇題目類型</div>
-                    <div class="buttonset" id="buttonset1">
-                        <button class="btn btn-basic" type="button" value="科學">科學：<span></span></button>
-                        <button class="btn btn-secondary" type="button" value="發明">發明：<span></span></button>
-                        <button class="btn btn-danger" type="button" value="天文">天文：<span></span></button>
-                        <button class="btn btn-warning" type="button" value="常識">常識：<span></span></button>
-                        <button class="btn btn-success" type="button" value="藝術">藝術：<span></span></button>
-                        <button class="btn btn-info" type="button" value="人物">人物：<span></span></button>
-                    </div>
-                </form>
-            </div>
-            <div class="qAreaDiv">
-                <h1 id="qArea1">　</h1>
-            </div>
-            <div>
-                <h1 id="countDownArea1">　</h1>
-            </div>
-            <div id="answerEarly1" class="answerEarly">
-                <button id="answerEarlyButton1" type="button" class="btn btn-primary btn-lg"><strong style="font-size: 18pt">　我　要　搶　答　</strong></button>
-            </div>
-            <div class="scoreDiv">
-                <div>TeamB 總題數 <span class="teamTotalQ"></span> 題</div>
-                <div>答對 <span id="rightAnsNum1">0</span> 題</div>
-                <div>答錯 <span id="wrongAnsNum1">0</span> 題</div>
-            </div>
-        </fieldset>
+        <legend>Team B</legend>
+        <div>
+            <form method="GET">
 
-        <div class="dialogWin" id="dialog" title="請答題">
-            答案是：
-            <div id="dialogAnswer"></div>
+                <div class="qTypeTitle">選擇題目類型</div>
+                <div class="buttonset" id="buttonset1">
+                    <button class="btn btn-basic" type="button" value="科學">科學：<span></span></button>
+                    <button class="btn btn-secondary" type="button" value="發明">發明：<span></span></button>
+                    <button class="btn btn-danger" type="button" value="天文">天文：<span></span></button>
+                    <button class="btn btn-warning" type="button" value="常識">常識：<span></span></button>
+                    <button class="btn btn-success" type="button" value="藝術">藝術：<span></span></button>
+                    <button class="btn btn-info" type="button" value="人物">人物：<span></span></button>
+                </div>
+            </form>
         </div>
+        <div class="qAreaDiv">
+            <h1 id="qArea1">　</h1>
+        </div>
+        <div>
+            <h1 id="countDownArea1">　</h1>
+        </div>
+        <div id="answerEarly1" class="answerEarly">
+            <button id="answerEarlyButton1" type="button" class="btn btn-primary btn-lg"><strong style="font-size: 18pt">　我　要　搶　答　</strong></button>
+        </div>
+        <div class="scoreDiv">
+            <div>TeamB 總題數 <span class="teamTotalQ"></span> 題</div>
+            <div>答對 <span id="rightAnsNum1">0</span> 題</div>
+            <div>答錯 <span id="wrongAnsNum1">0</span> 題</div>
+        </div>
+    </fieldset>
 
+    <div class="dialogWin" id="dialog" title="請答題">
+        答案是：
+        <div id="dialogAnswer"></div>
+    </div>
     <table hidden>
+        <tr>
+            <th>編號</th>
+            <th>題目</th>
+            <th>類別</th>
+            <th>答案</th>
+        </tr>
+        <tr>
+            <td class="qContent">是誰發明了青黴素(盤尼西林)</td>
+            <td class="qType">科學</td>
+            <td class="qAnswer">佛萊明</td>
+        </tr>
+        <tr>
+            <td class="qContent">DNA是什麼化學名稱的縮寫(中文)</td>
+            <td class="qType">科學</td>
+            <td class="qAnswer">去氧核醣核酸</td>
+        </tr>
+        <tr>
+            <td class="qContent">美國遺傳學家摩根藉由哪種昆蟲的研究，證明基因存在染色體</td>
+            <td class="qType">科學</td>
+            <td class="qAnswer">果蠅</td>
+        </tr>
+        <tr>
+            <td class="qContent">人類的血型系統分為哪幾種</td>
+            <td class="qType">科學</td>
+            <td class="qAnswer">ABO Rh</td>
+        </tr>
+        <tr>
+            <td class="qContent">天花的疫苗叫什麼</td>
+            <td class="qType">科學</td>
+            <td class="qAnswer">牛痘</td>
+        </tr>
+        <tr>
+            <td class="qContent">毒品有哪些會成癮(舉3種)</td>
+            <td class="qType">科學</td>
+            <td class="qAnswer">鴉片，海洛英，冰毒，嗎啡，大麻，古柯鹼</td>
+        </tr>
+        <tr>
+            <td class="qContent">英國最偉大的護士</td>
+            <td class="qType">科學</td>
+            <td class="qAnswer">南丁格爾</td>
+        </tr>
+        <tr>
+            <td class="qContent">世界最小的物質</td>
+            <td class="qType">科學</td>
+            <td class="qAnswer">夸克</td>
+        </tr>
+        <tr>
+            <td class="qContent">1</td>
+            <td class="qType">發明</td>
+            <td class="qAnswer">1</td>
+        </tr>
+        <tr>
+            <td class="qContent">1</td>
+            <td class="qType">天文</td>
+            <td class="qAnswer">1</td>
+        </tr>
+        <tr>
+            <td class="qContent">1</td>
+            <td class="qType">常識</td>
+            <td class="qAnswer">1</td>
+        </tr>
+        <tr>
+            <td class="qContent"></td>
+            <td class="qType">藝術</td>
+            <td class="qAnswer">1</td>
+        </tr>
+        <tr>
+            <td class="qContent">1</td>
+            <td class="qType">人物</td>
+            <td class="qAnswer">1</td>
+        </tr>    
+    
+    </table>
+<!--     <table hidden>
         <tr>
             <th>編號</th>
             <th>題目</th>
@@ -125,6 +198,6 @@
             <td class="qAnswer">a5</td>
         </tr>    
 
-    </table>
+    </table> -->
 </body>
 </html>

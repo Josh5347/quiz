@@ -12,12 +12,13 @@ $(document).ready(function(){
     var inputType;
 
     $( ".dialogWin" ).dialog({
-        open: function(event, ui){ $(".ui-dialog-titlebar-close").hide();},
+        open: function(event, ui){ $(".ui-dialog-titlebar-close").hide();},//移除關閉鈕
         modal: true,
         autoOpen: false,
         width: 350,
+        height: 300,
         autoSize: true,
-        show: 100,
+        show: 'slideDown',
         hide: 100,
         buttons: [
                 {
