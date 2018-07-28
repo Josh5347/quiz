@@ -262,7 +262,7 @@ $(document).ready(function(){
 
         //所應答的題目已經答完，array的第一個item是999，totalQ需 + 1
         if(answeredArray.length == (totalQ  + 1 )){
-            //開啟teamB
+            //開啟teamB，即teamA與teamB皆已開啟
             $('#team1').css('opacity','1').prop('disabled',false);
         }
         //計分區

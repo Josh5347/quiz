@@ -24,7 +24,8 @@ h1{
     margin-top: 15px
 }
 .qAreaDiv{
-    background-color: navajowhite;
+/*     background-color: navajowhite; */
+    background-color: #ffff99;
     border-radius: 10px;
     padding: 5px 2px 5px 2px;
     margin: 20px 1px 5px 1px;
