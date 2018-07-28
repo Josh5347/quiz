@@ -12,6 +12,7 @@ $(document).ready(function(){
     var inputType;
 
     $( ".dialogWin" ).dialog({
+        open: function(event, ui){ $(".ui-dialog-titlebar-close").hide();},
         modal: true,
         autoOpen: false,
         width: 350,
@@ -223,7 +224,7 @@ $(document).ready(function(){
 
         //若該題型已經無題目可出，將該題型按鈕隱藏
         if(qTypeNum[inputType]==0){
-            $('button[value='+inputType+']').css("visibility","hidden");
+            $('button[value='+inputType+']').slideUp(2000);
         }
 
         //console.log("歷史:",qTypeNum['歷史']," 科學:",qTypeNum['科學']);
