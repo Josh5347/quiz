@@ -14,7 +14,7 @@ $(document).ready(function(){
     $( ".dialogWin" ).dialog({
         modal: true,
         autoOpen: false,
-        //width: 400,
+        width: 350,
         autoSize: true,
         show: 100,
         hide: 100,
@@ -41,7 +41,16 @@ $(document).ready(function(){
                         dialogFunc();                        
                         $( this ).dialog( "close" );
                     }
+                },
+                {
+                    text: "不知",
+                    click: function() {
+                        qWrong[team]++;
+                        dialogFunc();                        
+                        $( this ).dialog( "close" );
+                    }
                 }
+
             ]
     });
 
@@ -61,8 +70,12 @@ $(document).ready(function(){
     //});
 
     var qTypeNum = new Object();
-    qTypeNum['歷史'] = 0;
     qTypeNum['科學'] = 0;
+    qTypeNum['發明'] = 0;
+    qTypeNum['天文'] = 0;
+    qTypeNum['常識'] = 0;
+    qTypeNum['藝術'] = 0;
+    qTypeNum['人物'] = 0;
 
     qType = [];
     $('.qType').each(function(){
@@ -70,13 +83,24 @@ $(document).ready(function(){
         console.log($(this).text());
         //計算各題型的題目數量
         switch ($(this).text()) {
-            case "歷史":
-                qTypeNum['歷史']++;
-                break;
             case "科學":
                 qTypeNum['科學']++;
                 break;
-        
+            case "發明":
+                qTypeNum['發明']++;
+                break;
+            case "天文":
+                qTypeNum['天文']++;
+                break;
+            case "常識":
+                qTypeNum['常識']++;
+                break;        
+            case "藝術":
+                qTypeNum['藝術']++;
+                break;        
+            case "人物":
+                qTypeNum['人物']++;
+                break;        
             default:
                 break;
         }
@@ -97,12 +121,14 @@ $(document).ready(function(){
     buttonset[0] = $('#buttonset0 button[type="button"]');
     buttonset[1] = $('#buttonset1 button[type="button"]');
 
-    //設定題型按鈕文字為"歷史 : num"
-    btnHTML = "歷史：" + qTypeNum['歷史'];
-    $('button[value="歷史"]').text(btnHTML);
+    //設定題型按鈕文字為"科學 : number"
+    $('button[value="科學"] span').text(qTypeNum['科學']);
+    $('button[value="發明"] span').text(qTypeNum['發明']);
+    $('button[value="天文"] span').text(qTypeNum['天文']);
+    $('button[value="常識"] span').text(qTypeNum['常識']);
+    $('button[value="藝術"] span').text(qTypeNum['藝術']);
+    $('button[value="人物"] span').text(qTypeNum['人物']);
 
-    btnHTML = "科學：" + qTypeNum['科學'];
-    $('button[value="科學"]').text(btnHTML);
 
     // 提醒自己，等待動畫可使用 shCircleLoader
     //Team A 題型按鈕
@@ -200,7 +226,7 @@ $(document).ready(function(){
             $('button[value='+inputType+']').css("visibility","hidden");
         }
 
-        console.log("歷史:",qTypeNum['歷史']," 科學:",qTypeNum['科學']);
+        //console.log("歷史:",qTypeNum['歷史']," 科學:",qTypeNum['科學']);
 
         changeButtonText(inputType);
         //btnHTML = "歷史：" + qTypeNum['歷史'];

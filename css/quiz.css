@@ -11,17 +11,18 @@ legend{
     font-size: 20px;
 }
 .qTypeTitle{
-    margin-left: 50px;
+    margin-left: 10%;
     font-size: 28px;
     float : left;
 }
 h1{
     clear: left;
     margin-top: 2px;
-    margin-bottom: 2px
+    margin-bottom: 2px;
 }
-.radioset{
-    margin-top: 15px
+.buttonset{
+    text-align: left;
+    margin-left: 25%;
 }
 .qAreaDiv{
 /*     background-color: navajowhite; */
