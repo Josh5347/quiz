@@ -29,7 +29,8 @@ h1{
 }
 .qAreaDiv{
 /*     background-color: navajowhite; */
-    background-color: #ffff99;
+    /* background-color: #ffff99; */
+    background-color: #b3d9ff;
     border-radius: 10px;
     padding: 5px 2px 5px 2px;
     margin: 20px 1px 5px 1px;
@@ -44,7 +45,7 @@ h1{
     background-color: cornflowerblue;
     border-radius: 10px;
     font-size: 20px;
-    width: 200px;
+    width: 230px;
     height: 120px;
     font-weight: bolder;
     color: white;

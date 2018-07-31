@@ -74,10 +74,11 @@ $(document).ready(function(){
     var qTypeNum = new Object();
     qTypeNum['科學'] = 0;
     qTypeNum['發明'] = 0;
+    qTypeNum['氣象'] = 0;
     qTypeNum['天文'] = 0;
     qTypeNum['常識'] = 0;
     qTypeNum['藝術'] = 0;
-    qTypeNum['人物'] = 0;
+    qTypeNum['歷史'] = 0;
 
     qType = [];
     $('.qType').each(function(){
@@ -91,6 +92,9 @@ $(document).ready(function(){
             case "發明":
                 qTypeNum['發明']++;
                 break;
+            case "氣象":
+                qTypeNum['氣象']++;
+                break;
             case "天文":
                 qTypeNum['天文']++;
                 break;
@@ -100,8 +104,8 @@ $(document).ready(function(){
             case "藝術":
                 qTypeNum['藝術']++;
                 break;        
-            case "人物":
-                qTypeNum['人物']++;
+            case "歷史":
+                qTypeNum['歷史']++;
                 break;        
             default:
                 break;
@@ -126,10 +130,11 @@ $(document).ready(function(){
     //設定題型按鈕文字為"科學 : number"
     $('button[value="科學"] span').text(qTypeNum['科學']);
     $('button[value="發明"] span').text(qTypeNum['發明']);
+    $('button[value="氣象"] span').text(qTypeNum['氣象']);
     $('button[value="天文"] span').text(qTypeNum['天文']);
     $('button[value="常識"] span').text(qTypeNum['常識']);
     $('button[value="藝術"] span').text(qTypeNum['藝術']);
-    $('button[value="人物"] span').text(qTypeNum['人物']);
+    $('button[value="歷史"] span').text(qTypeNum['歷史']);
 
 
     // 提醒自己，等待動畫可使用 shCircleLoader
