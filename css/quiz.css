@@ -14,7 +14,7 @@ legend{
 }
 
 .qTypeTitle{
-    margin-left: 20%;
+    margin-left: 5%;
     font-size: 28px;
     float : left;
 }
@@ -25,12 +25,12 @@ h1{
 }
 .buttonset{
     text-align: left;
-    margin-left: 35%;
+    margin-left: 30%;
 }
 .qAreaDiv{
 /*     background-color: navajowhite; */
     /* background-color: #ffff99; */
-    background-color: #b3d9ff;
+    background-color: #cce6ff;
     border-radius: 10px;
     padding: 5px 2px 5px 2px;
     margin: 20px 1px 5px 1px;

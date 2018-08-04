@@ -136,6 +136,7 @@ $(document).ready(function(){
     $('button[value="藝術"] span').text(qTypeNum['藝術']);
     $('button[value="歷史"] span').text(qTypeNum['歷史']);
 
+    //$('.buttonset button').css('font-size', '26px');
 
     // 提醒自己，等待動畫可使用 shCircleLoader
     //Team A 題型按鈕
